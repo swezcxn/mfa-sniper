@@ -19,10 +19,17 @@ if %errorlevel% neq 0 (
     exit /b 1
 )
 
+:: ── package.json kontrol ──
+if not exist "package.json" (
+    echo [HATA] package.json yok!
+    pause
+    exit /b 1
+)
+
 :: ── node_modules kontrol ──
 if not exist "node_modules" (
     echo [BILGI] node_modules yok, npm install calistiriliyor...
-    call npm install axios discord-mfa dotenv
+    call npm install
     if %errorlevel% neq 0 (
         echo [HATA] npm install basarisiz!
         pause
